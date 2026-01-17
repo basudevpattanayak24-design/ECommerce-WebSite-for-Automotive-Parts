@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<style>
+body{
+  background:linear-gradient(to right,#56ab2f,#a8e063);
+  font-family:Segoe UI;
+  margin:0;
+}
+
+/* NAVBAR */
+header{
+  background:#0d1b2a;
+  color:white;
+  padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav a{
+  color:white;
+  margin-left:15px;
+  text-decoration:none;
+  font-weight:bold;
+}
+nav a:hover{
+  text-decoration:underline;
+}
+
+/* REGISTER CARD */
+.card{
+  width:340px;
+  background:white;
+  margin:100px auto;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+}
+input{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border-radius:5px;
+  border:1px solid #ccc;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#2d6a4f;
+  color:white;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+button:hover{
+  background:#1b4332;
+}
+</style>
+
+<script>
+function registerUser(){
+  // Show alert (optional)
+  alert("Registration Successful! Redirecting to Login Page...");
+  
+  // Redirect to login.html
+  window.location.href = "login.html";
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+<h2>🚗 Auto Parts Store</h2>
+<nav>
+<a href="index.html">Home</a>
+
+</nav>
+</header>
+
+<!-- REGISTER CARD -->
+<div class="card">
+<h2>Create Account</h2>
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button onclick="registerUser()">Register</button>
+</div>
+
+</body>
+</html>

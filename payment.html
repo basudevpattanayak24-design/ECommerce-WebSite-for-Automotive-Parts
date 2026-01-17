@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment</title>
+<style>
+body{ font-family:Segoe UI; background:#f1f5f9; margin:0; padding:0;}
+.container{ width:500px; margin:50px auto; background:white; padding:20px; border-radius:10px; box-shadow:0 5px 15px #ccc;}
+h2{text-align:center;}
+table{ width:100%; border-collapse:collapse; margin-top:15px;}
+th, td{ border:1px solid #ccc; padding:10px; text-align:center;}
+th{ background:#0d1b2a; color:white;}
+input[type=number], input[type=text]{ width:100%; padding:8px; margin:5px 0; border-radius:5px; border:1px solid #ccc;}
+.pay-btn{ display:block; margin:15px auto; padding:12px 25px; background:#e63946; color:white; border:none; border-radius:25px; font-size:16px; cursor:pointer;}
+.pay-btn:hover{ background:#d62828;}
+.payment-form{ margin-top:20px;}
+.payment-form h3{ margin-bottom:10px; color:#0d1b2a;}
+.payment-form input{ width:100%; padding:8px; margin:5px 0; border-radius:5px; border:1px solid #ccc;}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Payment Page</h2>
+
+<!-- CART DETAILS -->
+<table id="cartTable">
+<tr>
+<th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th>
+</tr>
+</table>
+<div style="text-align:right; margin-top:10px;">
+Total: ₹<span id="totalPrice">0</span>
+</div>
+
+<!-- PAYMENT DETAILS FORM -->
+<div class="payment-form">
+<h3>Enter Payment Details</h3>
+<input type="text" id="cardName" placeholder="Cardholder Name">
+<input type="text" id="cardNumber" placeholder="Card Number (16 digits)">
+<input type="text" id="expiry" placeholder="Expiry (MM/YY)">
+<input type="text" id="cvv" placeholder="CVV">
+</div>
+
+<button class="pay-btn" onclick="checkout()">Pay Now</button>
+</div>
+
+<script>
+let cartItem = JSON.parse(localStorage.getItem('cartItem'));
+let cart = cartItem ? [cartItem] : [];
+
+function renderCart(){
+  const table = document.getElementById("cartTable");
+  table.innerHTML = `<tr>
+    <th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th>
+  </tr>`;
+  let total = 0;
+  cart.forEach((item,index)=>{
+    let subtotal = item.price * item.qty;
+    total += subtotal;
+    table.innerHTML += `<tr>
+      <td>${item.name}</td>
+      <td>₹${item.price}</td>
+      <td><input type="number" min="1" value="${item.qty}" onchange="updateQty(${index},this.value)"></td>
+      <td>₹${subtotal}</td>
+    </tr>`;
+  });
+  document.getElementById("totalPrice").innerText = total;
+}
+
+function updateQty(index,value){
+  cart[index].qty = parseInt(value);
+  renderCart();
+}
+
+function checkout(){
+  // Get payment details
+  let name = document.getElementById("cardName").value.trim();
+  let number = document.getElementById("cardNumber").value.trim();
+  let expiry = document.getElementById("expiry").value.trim();
+  let cvv = document.getElementById("cvv").value.trim();
+
+  // Simple validation
+  if(!name || !number || !expiry || !cvv){
+    alert("Please fill all payment details!");
+    return;
+  }
+  if(number.length!==16 || isNaN(number)){
+    alert("Enter valid 16-digit card number");
+    return;
+  }
+  if(cvv.length!==3 || isNaN(cvv)){
+    alert("Enter valid 3-digit CVV");
+    return;
+  }
+
+  alert(`Payment Successful!\n\nTotal: ₹${document.getElementById("totalPrice").innerText}\nPaid by: ${name}`);
+  localStorage.removeItem('cartItem'); // Clear cart
+  window.location.href = 'products.html'; // Redirect to products page
+}
+
+renderCart();
+</script>
+
+</body>
+</html>

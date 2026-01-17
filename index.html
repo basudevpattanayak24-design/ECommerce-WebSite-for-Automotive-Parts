@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Auto Parts Store</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Segoe UI;
+  background:linear-gradient(to right,#e0eafc,#cfdef3);
+}
+
+/* HEADER / NAVBAR */
+header{
+  background:#0d1b2a;
+  color:white;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav a{
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* HERO SECTION */
+.hero{
+  text-align:center;
+  padding:80px;
+}
+.hero h1{
+  font-size:45px;
+  color:#0d1b2a;
+}
+.hero p{
+  font-size:18px;
+}
+.btn{
+  padding:12px 25px;
+  background:#1b263b;
+  color:white;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  margin-top:20px;
+}
+.btn:hover{
+  background:#415a77;
+}
+
+/* FEATURED PRODUCTS */
+.featured{
+  padding:40px 20px;
+}
+.featured h2{
+  text-align:center;
+  margin-bottom:30px;
+  color:#0d1b2a;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 5px 10px #ccc;
+  text-align:center;
+}
+.card h3{
+  color:#0d1b2a;
+}
+.card p{
+  font-size:14px;
+  color:#444;
+}
+.card .price{
+  font-weight:bold;
+  margin:10px 0;
+}
+.card button{
+  background:#0d1b2a;
+  color:white;
+  border:none;
+  padding:8px 18px;
+  border-radius:20px;
+  cursor:pointer;
+}
+.card button:hover{
+  background:#1b263b;
+}
+
+/* FOOTER */
+footer{
+  background:#0d1b2a;
+  color:white;
+  text-align:center;
+  padding:10px;
+}
+</style>
+
+<script>
+function addCart(item){
+  alert(item + " added to cart");
+}
+</script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+<h2>🚗 Auto Parts Store</h2>
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Premium Automotive Spare Parts</h1>
+<p>Car & Bike parts at best prices</p>
+<!-- Redirect to register page on click -->
+<a href="register.html"><button class="btn">Shop Now</button></a>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<div class="featured">
+<h2>Featured Products</h2>
+<div class="products">
+  <div class="card">
+    <h3>Brake Pads</h3>
+    <p>High quality brake pads ensuring safe and smooth braking.</p>
+    <p class="price">₹1500</p>
+    <button onclick="addCart('Brake Pads')">Add to Cart</button>
+  </div>
+  <div class="card">
+    <h3>Engine Oil</h3>
+    <p>Premium engine oil for better performance and mileage.</p>
+    <p class="price">₹900</p>
+    <button onclick="addCart('Engine Oil')">Add to Cart</button>
+  </div>
+  <div class="card">
+    <h3>Car Battery</h3>
+    <p>Long lasting high power battery for all cars.</p>
+    <p class="price">₹4200</p>
+    <button onclick="addCart('Car Battery')">Add to Cart</button>
+  </div>
+  <div class="card">
+    <h3>LED Headlight</h3>
+    <p>Bright LED headlight for better night visibility.</p>
+    <p class="price">₹2500</p>
+    <button onclick="addCart('LED Headlight')">Add to Cart</button>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>© 2026 Auto Parts Store</footer>
+
+</body>
+</html>

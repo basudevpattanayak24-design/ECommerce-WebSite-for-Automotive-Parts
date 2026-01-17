@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Auto Parts – Products</title>
+<style>
+body{ margin:0; font-family:Segoe UI, Arial; background:#f1f5f9;}
+.navbar{ background:#0d1b2a; color:white; display:flex; justify-content:space-between; align-items:center; padding:15px 30px;}
+.navbar .logo{ font-size:22px; font-weight:bold;}
+.navbar nav a{ color:white; margin-left:20px; text-decoration:none; font-weight:500;}
+.navbar nav a:hover{ text-decoration:underline;}
+.products{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:20px;}
+.card{ background:white; border-radius:10px; box-shadow:0 5px 15px #ccc; padding:20px; text-align:center;}
+.card h3{ color:#0d1b2a;}
+.card p{ font-size:14px; color:#444;}
+.card .price{ font-weight:bold; font-size:16px; margin:10px 0;}
+.card button{ background:#0d1b2a; color:white; border:none; padding:8px 18px; border-radius:20px; cursor:pointer;}
+.card button:hover{ background:#1b263b;}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🚗 Auto Parts</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+  </nav>
+</header>
+
+<h2>Our Products</h2>
+<div class="products" id="productsContainer"></div>
+
+<script>
+const productsList = [
+  {name:"Brake Pads", price:1500}, {name:"Engine Oil", price:900},
+  {name:"Car Battery", price:4200}, {name:"LED Headlight", price:2500},
+  {name:"Car Tyre", price:5200}, {name:"Bike Chain Kit", price:1200},
+  {name:"Spark Plug", price:350}, {name:"Air Filter", price:600},
+  {name:"Radiator", price:4800}, {name:"Clutch Plate", price:3200},
+  {name:"Side Mirror", price:1800}, {name:"Seat Cover", price:2600},
+  {name:"Wiper Blade", price:700}, {name:"Car Horn", price:850},
+  {name:"Suspension", price:5200}, {name:"Gear Box", price:9200},
+  {name:"Exhaust System", price:3800}, {name:"Steering Wheel", price:2900},
+  {name:"Dashboard Kit", price:3400}, {name:"Fuel Pump", price:4100}
+];
+
+const container = document.getElementById("productsContainer");
+productsList.forEach(p=>{
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `<h3>${p.name}</h3>
+                   <p class="price">₹${p.price}</p>
+                   <button onclick="buyNow('${p.name}',${p.price})">Buy Now</button>`;
+  container.appendChild(div);
+});
+
+function buyNow(name, price){
+  // Save selected product in localStorage to access on payment page
+  localStorage.setItem('cartItem', JSON.stringify({name:name, price:price, qty:1}));
+  window.location.href = 'payment.html';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+body{
+  background:linear-gradient(to right,#141e30,#243b55);
+  font-family:Segoe UI;
+  margin:0;
+}
+
+/* NAVBAR */
+header{
+  background:#0d1b2a;
+  color:white;
+  padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav a{
+  color:white;
+  margin-left:15px;
+  text-decoration:none;
+  font-weight:bold;
+}
+nav a:hover{
+  text-decoration:underline;
+}
+
+/* LOGIN CARD */
+.card{
+  width:320px;
+  background:white;
+  margin:120px auto;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 10px 20px black;
+  text-align:center;
+}
+h2{text-align:center;}
+input{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border-radius:5px;
+  border:1px solid #ccc;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#243b55;
+  color:white;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+button:hover{background:#141e30;}
+</style>
+
+<script>
+function loginUser(){
+  alert("Login Successful! Redirecting to Products Page...");
+  // Redirect to products.html
+  window.location.href = "products.html";
+}
+</script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+<h2>🚗 Auto Parts Store</h2>
+<nav>
+<a href="index.html">Home</a>
+
+<a href="register.html">Register</a>
+
+</nav>
+</header>
+
+<!-- LOGIN CARD -->
+<div class="card">
+<h2>User Login</h2>
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button onclick="loginUser()">Login</button>
+</div>
+
+</body>
+</html>
